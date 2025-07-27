@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>✨ Act Web</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      transition: background 0.6s, color 0.6s;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 20px 50px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 999;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    header h1 {
+      font-size: 26px;
+      color: #00fff7;
+    }
+
+    nav a {
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: 500;
+      color: white;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: #00fff7;
+      left: 0;
+      bottom: -5px;
+      transition: 0.4s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .theme-toggle {
+      border: 2px solid #fff;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      background: transparent;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      padding: 100px 30px 30px;
+      text-align: center;
+    }
+
+    .profile-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #00fff7;
+      animation: glowPulse 3s infinite ease-in-out;
+      box-shadow: 0 0 20px #00fff7;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05);
+    }
+
+    @keyframes glowPulse {
+      0%, 100% {
+        box-shadow: 0 0 15px #00fff7, 0 0 30px #00fff7;
+      }
+      50% {
+        box-shadow: 0 0 25px #8e2de2, 0 0 50px #00fff7;
+      }
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .social-icons a {
+      color: #00fff7;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      padding: 10px;
+      border-radius: 50%;
+      font-size: 20px;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      background: #00fff7;
+      color: #111;
+      transform: scale(1.2);
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      background: linear-gradient(90deg, #00fff7, #8e2de2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero p {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #ccc;
+      max-width: 600px;
+      animation: fadeInUp 1.5s ease;
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 12px 28px;
+      background: #00fff7;
+      border: none;
+      font-weight: 600;
+      font-size: 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.3s;
+      animation: fadeInUp 2s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #00fff7;
+    }
+
+    section {
+      padding: 100px 50px 50px;
+    }
+
+    h2.section-title {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: #00fff7;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 30px;
+      margin: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      transition: 0.4s;
+      animation: floatUp 1s ease-in-out;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-10px) scale(1.02);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    footer {
+      padding: 40px;
+      background: #111;
+      color: #aaa;
+      text-align: center;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes floatUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        padding: 20px;
+      }
+      nav {
+        margin-top: 10px;
+      }
+      .hero h2 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Achutam  Mishra</h1>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="theme-toggle" id="toggleTheme">🌙</button>
+  </header>
+
+  <section class="hero">
+    <img src="WhatsApp_Image_2025-07-27_at_11.17.23-removebg-preview.png" alt="My Photo" class="profile-img" />
+    
+    <div class="social-icons">
+      <a href="https://www.youtube.com/@WEB_DEVLOPER_07" target="_blank" title="GitHub">YouTube</a>
+      <a href="https://achutammishra5-creator.github.io/Web-devloper-07/" target="_blank" title="LinkedIn">My Game</a>
+      
+    </div>
+
+    <h2>Creative Front-End Developer</h2>
+    <p>I design beautiful, user-friendly websites with a focus on speed, aesthetics, and responsiveness.</p>
+    <button class="btn" onclick="document.querySelector('#contact').scrollIntoView({behavior:'smooth'})">Contact Me</button>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="glass-card">
+      <p>Hello! I’m a passionate web developer who loves crafting modern and interactive user experiences. My work combines elegant design and efficient code to build fully responsive and accessible websites.</p>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2 class="section-title">Skills</h2>
+    <div class="grid">
+      <div class="glass-card">💡 HTML & Semantic Tags</div>
+      <div class="glass-card">🎨 Advanced CSS & Animations</div>
+      <div class="glass-card">⚡ JavaScript & DOM</div>
+      <div class="glass-card">🧠 Responsive Design</div>
+      <div class="glass-card">🛠️ Git & GitHub</div>
+      <div class="glass-card">🌐 Hosting & SEO</div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="grid">
+      <div class="glass-card">
+        <h3>🌀 Animated Portfolio</h3>
+        <p>A sleek, single-page site using advanced JS and glassmorphism UI.</p>
+      </div>
+      <div class="glass-card">
+        <h3>🎮 Puzzle Brain Game</h3>
+        <p>A brain teaser with logic puzzles and UI hints. Built in pure HTML/CSS/JS.</p>
+      </div>
+      <div class="glass-card">
+        <h3>📱 Chat UI</h3>
+        <p>Responsive and modern chat interface with real-time elements.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact</h2>
+    <div class="glass-card">
+      <p>📧 Email: achutammishra5@gmail.com</p>
+      <p>📞 Phone: +91 9413094262</p>
+      <p>🌍 Location: Basant-Vihar,sikar,rajasthan,india.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Act Web. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById("toggleTheme");
+    let dark = true;
+    toggleBtn.addEventListener("click", () => {
+      document.body.style.background = dark
+        ? "linear-gradient(135deg, #ffffff, #e4e4e4)"
+        : "linear-gradient(135deg, #0f2027, #203a43, #2c5364)";
+      document.body.style.color = dark ? "#111" : "#fff";
+      toggleBtn.innerHTML = dark ? "☀️" : "🌙";
+      dark = !dark;
+    });
+  </script>
+</body>
+</html>
